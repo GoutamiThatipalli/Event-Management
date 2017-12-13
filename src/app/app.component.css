@@ -1,0 +1,29 @@
+.vertical-menu {
+    background-color: rgb(134, 128, 128);
+    height: 678px;
+}
+.vertical-menu a {
+    color: black;
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+
+}
+.row{
+    margin-right:0px;
+}
+
+.vertical-menu a:hover {
+    background-color: rgba(20, 10, 10, 0.904);
+    color: white;
+}    
+
+.vertical-menu a span{
+    vertical-align: middle;    
+}
+img {
+    width:190px;
+}
+.pic{
+    height:120px;
+}
