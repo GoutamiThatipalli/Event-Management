@@ -1,11 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { CategoryComponent } from './components/category/category.component';
 import { EventsComponent } from './components/category/events/events.component';
-
+import { EventservicesService } from './services/eventservices.service'
 
 const appRoutes: Routes = [
   { path: 'categories', component: CategoryComponent },
@@ -31,9 +32,10 @@ const appRoutes: Routes = [
     appRoutes,
     { enableTracing: true } 
   ),
+    HttpModule,
     BrowserModule
   ],
-  providers: [],
+  providers: [EventservicesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

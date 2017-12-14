@@ -1,3 +1,11 @@
-<div class="abc">
-
+<div class="card">
+    <div *ngFor="let obj of categories">
+        <div>
+                <img src="assets/img/{{obj.categoryLogo}}.png">
+        </div>
+        <div class="container">
+          <h4><b>{{obj.categoryName}}</b></h4> 
+          <p>{{obj.categoryDesc}}</p> 
+        </div> 
+    </div>
 </div>
