@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { CategoryComponent } from './components/category/category.component';
-import { EventsComponent } from './components/category/events/events.component';
+import { EventsComponent } from './components/events/events.component';
 import { EventservicesService } from './services/eventservices.service'
 
 const appRoutes: Routes = [
@@ -16,17 +16,15 @@ const appRoutes: Routes = [
   },
   { 
       path: 'categories',
-      component: CategoryComponent,
-      children: [ 
-        {
-          path:'events',
-          children:[
-            {
-              path: ':id',
-              component: EventsComponent
-            }
-          ]
-        }
+      component: CategoryComponent
+  },
+  {
+    path:'events',
+    children:[
+      {
+        path: ':id',
+        component: EventsComponent
+      }
     ]
   }
 ] 

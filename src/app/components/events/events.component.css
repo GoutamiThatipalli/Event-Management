@@ -1,0 +1,17 @@
+#logo{
+float: right;
+background-color: rgb(230, 230, 230)
+}
+.header{
+    color: red;
+}
+.head{
+    margin:0px 50px 20px 40px;
+}
+.bg{
+    background-color:  rgb(247, 247, 247);
+    height: 650px;
+}
+#field{
+    background-color: white;
+}

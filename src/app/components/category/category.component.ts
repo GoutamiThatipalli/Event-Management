@@ -17,6 +17,6 @@ categories:CategoryModel[];
   });
   }
   category(id){
-     this.router.navigate(['./events',id], { relativeTo: this.route });
+     this.router.navigate(['../events',id], { relativeTo: this.route });
    }
 }

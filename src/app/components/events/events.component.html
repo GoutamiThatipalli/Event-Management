@@ -1,0 +1,36 @@
+
+
+<div class="bg">
+<div id="logo">
+    <div class="card" *ngIf="category">
+      <div class="row"> 
+          <img class="col-md-4" src="assets/img/{{category.categoryLogo}}.png">
+          <div class="col-md-8">
+               <h4><b>{{category.categoryName}}</b></h4> 
+               <p>{{category.categoryDesc}}</p>
+          </div>  
+      </div>
+    </div>
+  </div>
+  <div class="head">
+      <br> <h3 class="header">New Event</h3>
+  </div>
+
+<div class="row"  id="field">
+  <div class="col-md-8">
+      <input type="text" class="form-control"  placeholder="Enter event name" ><br>
+      <textarea name="comment" class="form-control" rows="5" cols="50" form="usrform" placeholder="Enter Description here"></textarea> <br>
+      <input type="date" placeholder="From date" class="form-control"> 
+      <input type="date" placeholder="To date" value="To date" class="form-control">      
+    
+    
+    </div>
+  <div class="col-md-4">
+
+  </div>
+  
+</div>
+
+
+
+</div>
