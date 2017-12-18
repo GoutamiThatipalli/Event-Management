@@ -4,12 +4,11 @@
     </div>
 
     <div class="card">
-        <div class="col-md-4" *ngFor="let obj of categories"> 
+        <div class="col-md-4" *ngFor="let obj of categories" (click)="category(obj.category_id)"> 
             <img class="col-md-4" src="assets/img/{{obj.categoryLogo}}.png">
                 <div class="col-md-8">
                      <h4><b>{{obj.categoryName}}</b></h4> 
                      <p>{{obj.categoryDesc}}</p>
-  
                 </div>        
         </div>
     </div>

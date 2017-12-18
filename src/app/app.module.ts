@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
@@ -9,18 +9,27 @@ import { EventsComponent } from './components/category/events/events.component';
 import { EventservicesService } from './services/eventservices.service'
 
 const appRoutes: Routes = [
-  { path: 'categories', component: CategoryComponent },
-  { path: 'events', component: EventsComponent },
-  {
-    path: 'categories',
-    component: CategoryComponent,
-    data: { title: 'Categories' }
-  },
-  { path: '',
-    redirectTo: '/categories',
+  { 
+    path: '',
+    redirectTo: 'categories',
     pathMatch: 'full'
   },
-];
+  { 
+      path: 'categories',
+      component: CategoryComponent,
+      children: [ 
+        {
+          path:'events',
+          children:[
+            {
+              path: ':id',
+              component: EventsComponent
+            }
+          ]
+        }
+    ]
+  }
+] 
 
 @NgModule({
   declarations: [
@@ -28,10 +37,10 @@ const appRoutes: Routes = [
     CategoryComponent,
     EventsComponent
   ],
-  imports: [ RouterModule.forRoot(
-    appRoutes,
-    { enableTracing: true } 
-  ),
+  exports: [ RouterModule ],
+  imports: [ 
+    RouterModule.forRoot(appRoutes, { useHash: true, preloadingStrategy: PreloadAllModules }),
+    RouterModule.forChild(appRoutes),
     HttpModule,
     BrowserModule
   ],
