@@ -6,7 +6,11 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { CategoryComponent } from './components/category/category.component';
 import { EventsComponent } from './components/events/events.component';
-import { EventservicesService } from './services/eventservices.service'
+import { EventservicesService } from './services/eventservices.service';
+import {FormsModule,ReactiveFormsModule} from '@angular/forms';
+import { ImageUploadModule } from "angular2-image-upload";
+
+
 
 const appRoutes: Routes = [
   { 
@@ -40,7 +44,10 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes, { useHash: true, preloadingStrategy: PreloadAllModules }),
     RouterModule.forChild(appRoutes),
     HttpModule,
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    ImageUploadModule.forRoot()
   ],
   providers: [EventservicesService],
   bootstrap: [AppComponent]

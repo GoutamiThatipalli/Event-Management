@@ -15,3 +15,35 @@ background-color: rgb(230, 230, 230)
 #field{
     background-color: white;
 }
+#from,#to{
+    width: 343px;
+}
+input[type=date], select {
+    padding: 6px 6px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+:host /deep/.customClass {
+    background-color: #dd3;
+    border-radius: 5px;
+    margin:5px;
+    width: 500px;
+}
+
+.customClass .img-ul-upload {
+    background-color: #000 !important;
+}
+
+.customClass .img-ul-clear {
+    background-color: #B819BB !important;
+}
+
+.customClass .img-ul-drag-box-msg {
+    color: purple !important;
+}
+
+.customClass .img-ul-container {
+    background-color: #FF6CAD !important;
+}
