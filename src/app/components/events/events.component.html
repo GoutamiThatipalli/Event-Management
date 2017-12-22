@@ -1,6 +1,7 @@
 <div class="bg">
+<div class="first">
 <div id="logo">
-    <div class="card" *ngIf="category">
+    <div class="card"  *ngIf="category" >
       <div class="row"> 
           <img class="col-md-4" src="assets/img/{{category.categoryLogo}}.png">
           <div class="col-md-8">
@@ -9,20 +10,35 @@
           </div>  
       </div>
     </div>
-  </div>
+</div>
   <div class="head">
       <br> <h3 class="header">New Event</h3>
   </div>
-
+  </div>  
+  <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
 <div class="row"  id="field">
   <div class="col-md-8">
-      <input type="text" class="form-control"  placeholder="Enter event name" ><br>
-      <textarea name="comment" class="form-control" rows="5" cols="50" form="usrform" placeholder="Enter Description here"></textarea> <br>
-      <input id="from" type="date"  placeholder="From date">
-      <input id="to" type="date" placeholder="To date" value="To date">               
+      <input type="text" class="form-control" formControlName="eventName" placeholder="Enter event name" ><br>
+      <textarea name="comment" class="form-control" formControlName="eventDesc" rows="5" cols="50" form="usrform" placeholder="Enter Description here"></textarea> <br>
+      <input id="from" type="date"  placeholder="From date" formControlName="fromDate">
+      <input id="to" type="date" placeholder="To date" value="To date" formControlName="toDate">               
     </div> 
     <div class="col-md-4">
-        <image-upload [max]="10" [class]="customClass"></image-upload>
+        <image-upload [max]="10"></image-upload>
     </div>         
   </div>
+
+<div class="footer">
+  <label>Enter email is's seperated my commas</label>
+<div class="mail">
+    <tag-input [ngModel]='emptyArray' name="email" [ngModelOptions]="{standalone: true}" [onlyFromAutocomplete]="true" (onAdd)="onItemAdded($event)">
+        <tag-input-dropdown [autocompleteItems]='abc' [showDropdownIfEmpty]="true">
+          </tag-input-dropdown>
+    </tag-input>
+</div>
+</div>
+<input type="submit" class="btn submit" value="I am Done">
+<button type="button" class="btn">Cancel</button>
+
+</form>
 </div>

@@ -9,9 +9,8 @@ import { EventsComponent } from './components/events/events.component';
 import { EventservicesService } from './services/eventservices.service';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { ImageUploadModule } from "angular2-image-upload";
-
-
-
+import { TagInputModule } from 'ngx-chips';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 const appRoutes: Routes = [
   { 
     path: '',
@@ -46,7 +45,7 @@ const appRoutes: Routes = [
     HttpModule,
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule,TagInputModule, BrowserAnimationsModule,
     ImageUploadModule.forRoot()
   ],
   providers: [EventservicesService],

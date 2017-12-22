@@ -10,6 +10,11 @@ export class EventservicesService {
     return this.http.get('http://localhost:8080/events/getAllCategories')
       .map(res => res.json())
   }
+  fetchUsers(){
+    
+    return this.http.get('http://localhost:8080/events/getAllUsers')
+      .map(res => res.json())
+  }
   fetchCategoryById(id){
     
     return this.http.get('http://localhost:8080/events/getCategoryById/'+id)
