@@ -10,12 +10,17 @@ import { EventservicesService } from './services/eventservices.service';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { ImageUploadModule } from "angular2-image-upload";
 import { TagInputModule } from 'ngx-chips';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UpcommingComponent } from './components/upcomming/upcomming.component'; 
 const appRoutes: Routes = [
   { 
     path: '',
     redirectTo: 'categories',
     pathMatch: 'full'
+  },
+  {
+    path: 'upcomming',
+    component: UpcommingComponent
   },
   { 
       path: 'categories',
@@ -36,7 +41,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     CategoryComponent,
-    EventsComponent
+    EventsComponent,
+    UpcommingComponent
   ],
   exports: [ RouterModule ],
   imports: [ 

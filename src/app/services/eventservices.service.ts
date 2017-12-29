@@ -20,6 +20,14 @@ export class EventservicesService {
     return this.http.get('http://localhost:8080/events/getCategoryById/'+id)
       .map(res => res.json())
   }
+  fetchEvents(){
+    return this.http.get('http://localhost:8080/events/getAllEvents')
+    .map(res => res.json())
+  }
+  fetchUpcommingEvents(){
+    return this.http.get('http://localhost:8080/events/upcomming')
+    .map(res => res.json())
+  }
   postData(event){
     return this.http.post('http://localhost:8080/events/addevents',event)
     .subscribe(

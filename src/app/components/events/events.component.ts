@@ -3,7 +3,6 @@ import { ActivatedRoute, Router, Params } from '@angular/router';
 import { EventservicesService } from '../../services/eventservices.service';
 import { CategoryModel } from '../../model/categoryModel';
 import {UsersModel} from '../../model/usersModel';
-import { forEach } from '@angular/router/src/utils/collection';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -18,6 +17,7 @@ export class EventsComponent implements OnInit {
   abc=[];
   emptyArray=[];
   emailid=[];
+  image:any;
   form;
   constructor(private route: ActivatedRoute,
     private router: Router,private eventservice:EventservicesService) {
@@ -47,10 +47,14 @@ this.form = new FormGroup({
   onSubmit = function(event){
      event.category_id= this.id;
      event.emailId=this.emailid.toString();
-     this.eventservice.postData(event);
+     event.eventImage=this.image;
      console.log(event);
+     this.eventservice.postData(event);
     };
   onItemAdded(event){
-this.emailid.push(event);
+this.emailid.push(event.display);
+   }
+   onUploadFinished(event){
+    this.image=event.src;
    }
 }

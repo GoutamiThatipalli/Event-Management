@@ -24,8 +24,8 @@
       <input id="to" type="date" placeholder="To date" value="To date" formControlName="toDate">               
     </div> 
     <div class="col-md-4">
-        <image-upload [max]="10"></image-upload>
-    </div>         
+        <image-upload [max]="1" (uploadFinished)="onUploadFinished($event)"></image-upload>
+    </div>   
   </div>
 
 <div class="footer">
