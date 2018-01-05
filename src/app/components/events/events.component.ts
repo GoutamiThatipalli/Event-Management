@@ -4,6 +4,7 @@ import { EventservicesService } from '../../services/eventservices.service';
 import { CategoryModel } from '../../model/categoryModel';
 import {UsersModel} from '../../model/usersModel';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { HttpClient, HttpResponse, HttpEventType } from '@angular/common/http';
 
 @Component({
   selector: 'app-events',
@@ -55,6 +56,7 @@ this.form = new FormGroup({
 this.emailid.push(event.display);
    }
    onUploadFinished(event){
-    this.image=event.src;
+    this.image=event.file.name;
    }
 }
+

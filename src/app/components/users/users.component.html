@@ -1,0 +1,26 @@
+<h1>Users</h1>
+<table class="table table-bordered" [mfData]="data" #mf="mfDataTable">
+  <thead><tr class="active" >
+  <th><mfDefaultSorter by="userId">UserID</mfDefaultSorter></th>
+  <th> <mfDefaultSorter by="userName">Username</mfDefaultSorter></th>
+  <th><mfDefaultSorter by="firstName">Firstname</mfDefaultSorter></th>
+  <th><mfDefaultSorter by="middleName">Middlename</mfDefaultSorter></th>
+  <th><mfDefaultSorter by="lastName">lastName</mfDefaultSorter></th>
+  <th><mfDefaultSorter by="mobile">mobile</mfDefaultSorter></th>
+  </tr></thead>
+  <tbody>
+    <tr *ngFor="let user of mf.data | paginate: { itemsPerPage: 8, currentPage: p}">
+      <td>{{user.userId}}</td>
+      <td>{{user.userName}}</td>
+      <td>{{user.firstName}}</td>
+      <td>{{user.middleName}}</td>
+      <td>{{user.lastName}}</td>
+      <td>{{user.mobile}}</td>
+    </tr>
+  </tbody>
+</table>
+<pagination-controls (pageChange)="p = $event"
+maxSize="8"
+directionLinks="true"
+autoHide="true">
+</pagination-controls>

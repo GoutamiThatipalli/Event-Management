@@ -1,3 +1,11 @@
 .row{
     margin: 10px 10px 0px 10px;
 }
+.fix{
+    overflow-y:scroll;
+    height:600px;
+}
+.heading{
+    color:red;
+    margin-left:10px;
+}

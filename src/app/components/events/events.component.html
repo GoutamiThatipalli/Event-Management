@@ -15,13 +15,13 @@
       <br> <h3 class="header">New Event</h3>
   </div>
   </div>  
-  <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+  <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" enctype="multipart/form-data">
 <div class="row"  id="field">
   <div class="col-md-8">
       <input type="text" class="form-control" formControlName="eventName" placeholder="Enter event name" ><br>
       <textarea name="comment" class="form-control" formControlName="eventDesc" rows="5" cols="50" form="usrform" placeholder="Enter Description here"></textarea> <br>
-      <input id="from" type="date"  placeholder="From date" formControlName="fromDate">
-      <input id="to" type="date" placeholder="To date" value="To date" formControlName="toDate">               
+      <input id="from" type="date" min="2018-01-02" placeholder="From date" formControlName="fromDate">
+      <input id="to" type="date" min=fromDate placeholder="To date" value="To date" formControlName="toDate">               
     </div> 
     <div class="col-md-4">
         <image-upload [max]="1" (uploadFinished)="onUploadFinished($event)"></image-upload>
@@ -37,7 +37,7 @@
     </tag-input>
 </div>
 </div>
-<input type="submit" class="btn submit" value="I am Done">
+<input type="submit" class="btn submit" value="I am Done" [disabled]="!form.valid">
 <button type="button" class="btn">Cancel</button>
 
 </form>

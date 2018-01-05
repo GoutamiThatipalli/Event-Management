@@ -15,9 +15,6 @@ imgUrl:any;
   ngOnInit() {
     this.eventservice.fetchUpcommingEvents().subscribe((events)=>{
       this.events=events;      
-      console.log(events);
-      for(let i=0;i<events.length;i++)
-      this.events[i].url=new URL(events[i].eventImage);
   });
 }
 
