@@ -28,7 +28,7 @@ const appRoutes: Routes = [
   {
     path: 'upcomming',
     component: UpcommingComponent,
-    canActivate: [CanActivateAuthGuard]
+   // canActivate: [CanActivateAuthGuard]
   },
   {
     path: 'login',
@@ -37,7 +37,7 @@ const appRoutes: Routes = [
   {
     path: 'users',
     component: UsersComponent,
-    canActivate: [CanActivateAuthGuard]
+    //canActivate: [CanActivateAuthGuard]
   },
   { 
       path: 'categories',
@@ -50,7 +50,7 @@ const appRoutes: Routes = [
       {
         path: ':id',
         component: EventsComponent,
-        canActivate: [CanActivateAuthGuard]
+      //  canActivate: [CanActivateAuthGuard]
       }
     ]
   }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { EventservicesService } from '../../services/eventservices.service';
 import {EventsModel} from '../../model/events';
+import {DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
+import { Url } from 'url';
 
 @Component({
   selector: 'app-upcomming',
@@ -9,10 +11,17 @@ import {EventsModel} from '../../model/events';
 })
 export class UpcommingComponent implements OnInit {
     events: EventsModel;
-    url:any;
-  constructor(private eventservice:EventservicesService) { }
-imgUrl:any;
+    public url="file:///home/goutamit/Pictures/updated.png";
+    public imgUrlVal:Url;
+
+  constructor(
+    private eventservice:EventservicesService,
+    private sanitizer: DomSanitizer
+  ) { }
+  imgUrl:any;
+
   ngOnInit() {
+    this.imgUrlVal = this.sanitizer.bypassSecurityTrustResourceUrl(this.url);
     this.eventservice.fetchUpcommingEvents().subscribe((events)=>{
       this.events=events;      
   });

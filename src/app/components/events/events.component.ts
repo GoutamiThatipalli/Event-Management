@@ -20,6 +20,7 @@ export class EventsComponent implements OnInit {
   emailid=[];
   image:any;
   form;
+  
   constructor(private route: ActivatedRoute,
     private router: Router,private eventservice:EventservicesService) {
    }
@@ -46,17 +47,25 @@ this.form = new FormGroup({
 });
   }
   onSubmit = function(event){
+    console.log(this.image);
+    let formData:FormData = new FormData();
      event.category_id= this.id;
      event.emailId=this.emailid.toString();
-     event.eventImage=this.image;
+     event.eventImage=this.image.name;
      console.log(event);
-     this.eventservice.postData(event);
+     formData.append('file', this.image, this.image.name);
+     formData.append('data',new Blob([JSON.stringify(event)],
+     {
+         type: "application/json"
+     }));
+     console.log(formData);
+     this.eventservice.postData(formData);
     };
   onItemAdded(event){
 this.emailid.push(event.display);
    }
    onUploadFinished(event){
-    this.image=event.file.name;
+    this.image=event.file;
    }
 }
 
