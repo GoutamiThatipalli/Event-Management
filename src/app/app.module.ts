@@ -18,7 +18,8 @@ import {DataTableModule} from "angular2-datatable";
 import {NgxPaginationModule} from 'ngx-pagination';
 import { LoginComponent } from './components/login/login.component';
 import {CanActivateAuthGuard} from './can-activate.authguard';
-import {AuthenticationService} from '../app/services/authentication.service'
+import {AuthenticationService} from '../app/services/authentication.service';
+import { LogoutComponent } from './components/logout/logout.component'
 const appRoutes: Routes = [
   { 
     path: '',
@@ -28,7 +29,7 @@ const appRoutes: Routes = [
   {
     path: 'upcomming',
     component: UpcommingComponent,
-   // canActivate: [CanActivateAuthGuard]
+    canActivate: [CanActivateAuthGuard]
   },
   {
     path: 'login',
@@ -37,12 +38,17 @@ const appRoutes: Routes = [
   {
     path: 'users',
     component: UsersComponent,
-    //canActivate: [CanActivateAuthGuard]
+    canActivate: [CanActivateAuthGuard]
+  },
+  {
+    path: 'logout',
+    component: LogoutComponent,
+    canActivate: [CanActivateAuthGuard]
   },
   { 
       path: 'categories',
-      component: CategoryComponent
-     // canActivate: [CanActivateAuthGuard]
+      component: CategoryComponent,
+      canActivate: [CanActivateAuthGuard]
   },
   {
     path:'events',
@@ -50,7 +56,7 @@ const appRoutes: Routes = [
       {
         path: ':id',
         component: EventsComponent,
-      //  canActivate: [CanActivateAuthGuard]
+        canActivate: [CanActivateAuthGuard]
       }
     ]
   }
@@ -63,7 +69,8 @@ const appRoutes: Routes = [
     EventsComponent,
     UpcommingComponent,
     UsersComponent,
-    LoginComponent
+    LoginComponent,
+    LogoutComponent
   ],
   exports: [ RouterModule ],
   imports: [ 

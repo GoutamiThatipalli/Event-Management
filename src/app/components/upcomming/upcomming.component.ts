@@ -11,17 +11,12 @@ import { Url } from 'url';
 })
 export class UpcommingComponent implements OnInit {
     events: EventsModel;
-    public url="file:///home/goutamit/Pictures/updated.png";
-    public imgUrlVal:Url;
-
   constructor(
     private eventservice:EventservicesService,
-    private sanitizer: DomSanitizer
   ) { }
   imgUrl:any;
 
   ngOnInit() {
-    this.imgUrlVal = this.sanitizer.bypassSecurityTrustResourceUrl(this.url);
     this.eventservice.fetchUpcommingEvents().subscribe((events)=>{
       this.events=events;      
   });
