@@ -3,6 +3,7 @@ import { EventservicesService } from '../../services/eventservices.service';
 import {EventsModel} from '../../model/events';
 import {DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
 import { Url } from 'url';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-upcomming',
@@ -12,7 +13,8 @@ import { Url } from 'url';
 export class UpcommingComponent implements OnInit {
     events: EventsModel;
   constructor(
-    private eventservice:EventservicesService,
+    private eventservice:EventservicesService,private route: ActivatedRoute,
+    private router: Router
   ) { }
   imgUrl:any;
 
@@ -20,6 +22,10 @@ export class UpcommingComponent implements OnInit {
     this.eventservice.fetchUpcommingEvents().subscribe((events)=>{
       this.events=events;      
   });
+}
+eventedit(id){
+  this.router.navigate(['../edit',id], { relativeTo: this.route });
+
 }
 
 }

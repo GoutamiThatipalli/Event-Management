@@ -19,7 +19,9 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { LoginComponent } from './components/login/login.component';
 import {CanActivateAuthGuard} from './can-activate.authguard';
 import {AuthenticationService} from '../app/services/authentication.service';
-import { LogoutComponent } from './components/logout/logout.component'
+import { LogoutComponent } from './components/logout/logout.component';
+import { EditComponent } from './components/edit/edit.component';
+import { EditByIdComponent } from './components/edit-by-id/edit-by-id.component'
 const appRoutes: Routes = [
   { 
     path: '',
@@ -30,6 +32,18 @@ const appRoutes: Routes = [
     path: 'upcomming',
     component: UpcommingComponent,
     canActivate: [CanActivateAuthGuard]
+  },
+  {
+    path: 'edit',
+    component: EditComponent,
+    canActivate: [CanActivateAuthGuard],
+    children:[
+      {
+        path: ':id',
+        component: EditByIdComponent,
+        canActivate: [CanActivateAuthGuard]
+      }
+    ]
   },
   {
     path: 'login',
@@ -70,7 +84,9 @@ const appRoutes: Routes = [
     UpcommingComponent,
     UsersComponent,
     LoginComponent,
-    LogoutComponent
+    LogoutComponent,
+    EditComponent,
+    EditByIdComponent
   ],
   exports: [ RouterModule ],
   imports: [ 
