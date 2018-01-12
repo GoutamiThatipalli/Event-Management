@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Directive } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { EventservicesService } from '../../services/eventservices.service';
 import { CategoryModel } from '../../model/categoryModel';
 import {UsersModel} from '../../model/usersModel';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { HttpClient, HttpResponse, HttpEventType } from '@angular/common/http';
-
+import { Input } from '@angular/core/src/metadata/directives';
 @Component({
   selector: 'app-events',
   templateUrl: './events.component.html',
@@ -19,8 +19,8 @@ export class EventsComponent implements OnInit {
   emptyArray=[];
   emailid=[];
   image:any;
-  form;
-  
+  public form:FormGroup;
+  formData:FormData = new FormData();
   constructor(private route: ActivatedRoute,
     private router: Router,private eventservice:EventservicesService) {
    }
@@ -47,19 +47,16 @@ this.form = new FormGroup({
 });
   }
   onSubmit = function(event){
-    console.log(this.image);
-    let formData:FormData = new FormData();
      event.category_id= this.id;
      event.emailId=this.emailid.toString();
      event.eventImage=this.image.name;
-     console.log(event);
-     formData.append('file', this.image, this.image.name);
-     formData.append('data',new Blob([JSON.stringify(event)],
+     this.formData.append('file', this.image, this.image.name);
+     this.formData.append('data',new Blob([JSON.stringify(event)],
      {
          type: "application/json"
      }));
-     console.log(formData);
-     this.eventservice.postData(formData);
+     console.log(this.formData);
+     this.eventservice.postData(this.formData);
     };
   onItemAdded(event){
 this.emailid.push(event.display);

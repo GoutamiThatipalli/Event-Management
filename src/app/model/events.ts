@@ -1,7 +1,7 @@
 export class EventsModel{
     eventId:String ;
     eventName:String ;
-    eventDescription:String ;
+    eventDesc:String ;
     eventImage:Blob;   
     fromDate:Date ;
     toDate:Date ;

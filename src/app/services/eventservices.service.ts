@@ -22,6 +22,11 @@ export class EventservicesService {
     return this.http.get('http://localhost:8080/events/getCategoryById/'+id)
       .map(res => res.json())
   }
+  fetchEventById(id){
+    
+    return this.http.get('http://localhost:8080/events/getEventById/'+id)
+      .map(res => res.json())
+  }
   fetchEvents(){
     return this.http.get('http://localhost:8080/events/getAllEvents')
     .map(res => res.json())
@@ -40,6 +45,17 @@ export class EventservicesService {
         console.log("Error occured");
       }
     );
+  }
+  editEvents(event){
+      return this.http.put('http://localhost:8080/events/updatevents',event)
+      .subscribe(
+        res => {
+          console.log(res);
+        },
+        err => {
+          console.log("Error occured");
+        }
+      );
   }
 
 }

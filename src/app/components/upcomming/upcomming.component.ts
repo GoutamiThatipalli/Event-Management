@@ -23,8 +23,8 @@ export class UpcommingComponent implements OnInit {
       this.events=events;      
   });
 }
-eventedit(id){
-  this.router.navigate(['../edit',id], { relativeTo: this.route });
+eventedit(eventid,id){
+  this.router.navigate(['../edit',id,eventid], { relativeTo: this.route });
 
 }
 

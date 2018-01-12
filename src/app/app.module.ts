@@ -39,7 +39,7 @@ const appRoutes: Routes = [
     canActivate: [CanActivateAuthGuard],
     children:[
       {
-        path: ':id',
+        path: ':id/:eventid',
         component: EditByIdComponent,
         canActivate: [CanActivateAuthGuard]
       }
