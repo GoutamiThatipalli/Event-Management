@@ -1,1 +1,25 @@
+<h1>Events</h1>
+<table class="table table-bordered" [mfData]="data" #mf="mfDataTable">
+  <thead><tr class="active" >
+  <th><mfDefaultSorter by="eventId">EventID</mfDefaultSorter></th>
+  <th> <mfDefaultSorter by="eventName">Eventname</mfDefaultSorter></th>
+  <th><mfDefaultSorter by="eventDesc">EventDescription</mfDefaultSorter></th>
+  <th><mfDefaultSorter by="fromDate">FromDate</mfDefaultSorter></th>
+  <th><mfDefaultSorter by="toDate">ToDate</mfDefaultSorter></th>
+  </tr></thead>
+  <tbody>
+    <tr *ngFor="let event of mf.data | paginate: { itemsPerPage: 8, currentPage: p}">
+      <td>{{event.eventId}}</td>
+      <td>{{event.eventName}}</td>
+      <td>{{event.eventDesc}}</td>
+      <td>{{event.fromDate}}</td>
+      <td>{{event.toDate}}</td>
+    </tr>
+  </tbody>
+</table>
+<pagination-controls (pageChange)="p = $event"
+maxSize="8"
+directionLinks="true"
+autoHide="true">
+</pagination-controls>
 <router-outlet></router-outlet>

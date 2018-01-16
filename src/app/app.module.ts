@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 import { HttpModule } from '@angular/http';
-
 import { AppComponent } from './app.component';
 import { CategoryComponent } from './components/category/category.component';
 import { EventsComponent } from './components/events/events.component';
@@ -35,12 +34,15 @@ const appRoutes: Routes = [
   },
   {
     path: 'edit',
-    component: EditComponent,
-    canActivate: [CanActivateAuthGuard],
     children:[
       {
         path: ':id/:eventid',
         component: EditByIdComponent,
+        canActivate: [CanActivateAuthGuard]
+      },
+      {
+        path: '',
+        component: EditComponent,
         canActivate: [CanActivateAuthGuard]
       }
     ]

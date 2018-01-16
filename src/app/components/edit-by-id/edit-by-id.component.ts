@@ -18,6 +18,8 @@ export class EditByIdComponent implements OnInit {
     form;
     private id : number;
     events: EventsModel;
+    pic;
+    image:any;
     @ViewChild(EventsComponent) child: EventsComponent;
     
   ngOnInit() {
@@ -43,7 +45,19 @@ console.log(this.child);
       (<FormControl>this.child.form.controls['toDate'])
       .setValue(this.events.toDate, { onlySelf: true });    
       this.child.emptyArray=this.events.emailId.split(",");
-      
+      this.child.onSubmit = function(event){
+        event.category_id= this.id;
+        event.emailId=this.emailid.toString();
+        event.eventImage=this.image.name;
+        this.formData.append('file', this.image, this.image.name);
+        this.formData.append('data',new Blob([JSON.stringify(event)],
+        {
+            type: "application/json"
+        }));
+        console.log(this.formData);
+   
+        this.eventservice.update(this.formData);
+       };
     }
     }, 1);
   }
