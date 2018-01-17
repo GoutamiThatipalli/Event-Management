@@ -24,7 +24,7 @@
       <input id="to" type="date" min=fromDate placeholder="To date" value="To date" formControlName="toDate">               
     </div> 
     <div class="col-md-4">
-        <image-upload [max]="1" (uploadFinished)="onUploadFinished($event)"></image-upload>
+        <image-upload [max]="1" [uploadedFiles]="uploaded" (uploadFinished)="onUploadFinished($event)"></image-upload>
     </div>   
   </div>
 

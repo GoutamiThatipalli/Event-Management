@@ -45,19 +45,7 @@ console.log(this.child);
       (<FormControl>this.child.form.controls['toDate'])
       .setValue(this.events.toDate, { onlySelf: true });    
       this.child.emptyArray=this.events.emailId.split(",");
-      this.child.onSubmit = function(event){
-        event.category_id= this.id;
-        event.emailId=this.emailid.toString();
-        event.eventImage=this.image.name;
-        this.formData.append('file', this.image, this.image.name);
-        this.formData.append('data',new Blob([JSON.stringify(event)],
-        {
-            type: "application/json"
-        }));
-        console.log(this.formData);
-   
-        this.eventservice.update(this.formData);
-       };
+     // this.child.uploaded=['assets/img/fileupload/'+this.events.eventImage]; 
     }
     }, 1);
   }

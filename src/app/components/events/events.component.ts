@@ -46,18 +46,20 @@ this.form = new FormGroup({
  toDate : new FormControl("", Validators.required),
 });
   }
+  uploaded:Array<string> = [
+    ];
    onSubmit = function(event){
-  //    event.category_id= this.id;
-  //    event.emailId=this.emailid.toString();
-  //    event.eventImage=this.image.name;
-  //    this.formData.append('file', this.image, this.image.name);
-  //    this.formData.append('data',new Blob([JSON.stringify(event)],
-  //    {
-  //        type: "application/json"
-  //    }));
-  //    console.log(this.formData);
+      event.category_id= this.id;
+      event.emailId=this.emailid.toString();
+      event.eventImage=this.image.name;
+      this.formData.append('file', this.image, this.image.name);
+      this.formData.append('data',new Blob([JSON.stringify(event)],
+      {
+          type: "application/json"
+      }));
+      console.log(this.formData);
 
-  //    this.eventservice.postData(this.formData);
+      this.eventservice.postData(this.formData);
     };
   onItemAdded(event){
 this.emailid.push(event.display);
