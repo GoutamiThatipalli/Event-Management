@@ -30,27 +30,24 @@ export class EditByIdComponent implements OnInit {
    );
    this.eventservice.fetchEventById(this.id).subscribe((events)=>{
     this.events=events;  
+    this.setInput();
 });   
 console.log(this.child);
   }
-  ngAfterViewChecked(){
-    setTimeout(() => {
-      if(this.child){
-        (<FormControl>this.child.form.controls['eventName'])
-      .setValue(this.events.eventName, { onlySelf: true });
-      (<FormControl>this.child.form.controls['eventDesc'])
-      .setValue(this.events.eventDesc, { onlySelf: true });
-      (<FormControl>this.child.form.controls['fromDate'])
-      .setValue(this.events.fromDate, { onlySelf: true });
-      (<FormControl>this.child.form.controls['toDate'])
-      .setValue(this.events.toDate, { onlySelf: true });    
-      this.child.emptyArray=this.events.emailId.split(",");
-     // this.child.uploaded=['assets/img/fileupload/'+this.events.eventImage]; 
-    }
-    }, 1);
+  setInput(){
+    if(this.child){
+      (<FormControl>this.child.form.controls['eventName'])
+    .setValue(this.events.eventName, { onlySelf: true });
+    (<FormControl>this.child.form.controls['eventDesc'])
+    .setValue(this.events.eventDesc, { onlySelf: true });
+    (<FormControl>this.child.form.controls['fromDate'])
+    .setValue(this.events.fromDate, { onlySelf: true });
+    (<FormControl>this.child.form.controls['toDate'])
+    .setValue(this.events.toDate, { onlySelf: true });    
+    this.child.emptyArray=this.events.emailId.split(",");
+ this.child.uploaded=['assets/img/fileupload/'+this.events.eventImage]; 
+ this.child.eventId=this.events.eventId;
   }
-  update(event){
-    this.eventservice.editEvents(event);
-  }
+}
 
 }

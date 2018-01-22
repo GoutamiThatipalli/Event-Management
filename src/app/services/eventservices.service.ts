@@ -46,8 +46,8 @@ export class EventservicesService {
       }
     );
   }
-  editEvents(event){
-      return this.http.put('http://localhost:8080/events/updatevents',event)
+  editEvents(event,id){
+      return this.http.put('http://localhost:8080/events/updatevents/'+id,event)
       .subscribe(
         res => {
           console.log(res);

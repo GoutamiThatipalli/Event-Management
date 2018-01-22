@@ -19,6 +19,7 @@ export class EventsComponent implements OnInit {
   emptyArray=[];
   emailid=[];
   image:any;
+  eventId:any;
   public form:FormGroup;
   formData:FormData = new FormData();
   constructor(private route: ActivatedRoute,
@@ -51,15 +52,25 @@ this.form = new FormGroup({
    onSubmit = function(event){
       event.category_id= this.id;
       event.emailId=this.emailid.toString();
-      event.eventImage=this.image.name;
-      this.formData.append('file', this.image, this.image.name);
-      this.formData.append('data',new Blob([JSON.stringify(event)],
-      {
-          type: "application/json"
-      }));
-      console.log(this.formData);
-
-      this.eventservice.postData(this.formData);
+      if(this.eventId!=""){
+        this.eventservice.fetchEventById(this.eventId).subscribe((eventbyid)=>{
+          this.eventbyid=eventbyid; 
+          event.eventImage=this.eventbyid.eventImage;
+          this.eventservice.editEvents(event,this.eventId);
+        })
+         
+      }
+      else{
+        event.eventImage=this.image.name;
+        this.formData.append('file', this.image, this.image.name);
+        this.formData.append('data',new Blob([JSON.stringify(event)],
+        {
+            type: "application/json"
+        }));
+        console.log(this.formData);
+  
+        this.eventservice.postData(this.formData);
+      }
     };
   onItemAdded(event){
 this.emailid.push(event.display);
