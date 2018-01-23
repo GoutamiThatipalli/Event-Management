@@ -2,7 +2,7 @@ import { Component, OnInit, Directive } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { EventservicesService } from '../../services/eventservices.service';
 import { CategoryModel } from '../../model/categoryModel';
-import {UsersModel} from '../../model/usersModel';
+import { UsersModel } from '../../model/usersModel';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { HttpClient, HttpResponse, HttpEventType } from '@angular/common/http';
 import { Input } from '@angular/core/src/metadata/directives';
@@ -19,7 +19,7 @@ export class EventsComponent implements OnInit {
   emptyArray=[];
   emailid=[];
   image:any;
-  eventId:any;
+  eventId;
   public form:FormGroup;
   formData:FormData = new FormData();
   constructor(private route: ActivatedRoute,
@@ -52,10 +52,10 @@ this.form = new FormGroup({
    onSubmit = function(event){
       event.category_id= this.id;
       event.emailId=this.emailid.toString();
-      if(this.eventId!=""){
+      if(this.eventId!=undefined){
         this.eventservice.fetchEventById(this.eventId).subscribe((eventbyid)=>{
           this.eventbyid=eventbyid; 
-          event.eventImage=this.eventbyid.eventImage;
+          event.eventImage=this.eventbyid.eventImage;    
           this.eventservice.editEvents(event,this.eventId);
         })
          
@@ -73,7 +73,17 @@ this.form = new FormGroup({
       }
     };
   onItemAdded(event){
+    console.log(event);
 this.emailid.push(event.display);
+   }
+   onItemRemoved(event)
+   {
+     console.log(event);
+     const index= this.emptyArray.indexOf(event);
+     if (index !== -1) {
+      this.emptyArray.splice(index,1);
+      this.emailid=this.emptyArray;
+      }
    }
    onUploadFinished(event){
     this.image=event.file;

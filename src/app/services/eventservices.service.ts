@@ -3,10 +3,13 @@ import { Http, RequestOptions,Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
 import { HttpEvent, HttpRequest } from '@angular/common/http';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ok } from 'assert';
 @Injectable()
 export class EventservicesService {
 
-  constructor(private http:Http) { }
+  constructor(private route: ActivatedRoute,
+    private router: Router,private http:Http) { }
   fetchCategories(){
     
     return this.http.get('http://localhost:8080/events/getAllCategories',{"withCredentials":true})
@@ -40,6 +43,9 @@ export class EventservicesService {
     .subscribe(
       res => {
         console.log(res);
+        if (res["_body"]) { 
+          this.router.navigate(['./upcomming']);
+        }
       },
       err => {
         console.log("Error occured");
@@ -50,6 +56,9 @@ export class EventservicesService {
       return this.http.put('http://localhost:8080/events/updatevents/'+id,event)
       .subscribe(
         res => {
+          if (res.ok==true) { 
+            this.router.navigate(['./upcomming']);
+          }
           console.log(res);
         },
         err => {

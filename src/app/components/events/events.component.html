@@ -31,13 +31,13 @@
 <div class="footer">
   <label>Enter email is's seperated my commas</label>
 <div class="mail">
-    <tag-input [ngModel]='emptyArray' name="email" [ngModelOptions]="{standalone: true}" [onlyFromAutocomplete]="true" (onAdd)="onItemAdded($event)">
+    <tag-input [ngModel]='emptyArray' name="email" [ngModelOptions]="{standalone: true}" [onlyFromAutocomplete]="true" (onAdd)="onItemAdded($event)" (onRemove)="onItemRemoved($event)" >
         <tag-input-dropdown [autocompleteItems]='abc' [showDropdownIfEmpty]="true">
           </tag-input-dropdown>
     </tag-input>
 </div>
 </div>
-<input type="submit" class="btn submit" value="I am Done" [disabled]="!form.valid">
+<input type="submit" class="btn submit" value="I am Done">
 <button type="button" class="btn">Cancel</button>
 </form>
 </div>
